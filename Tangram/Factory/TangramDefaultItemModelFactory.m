@@ -126,6 +126,7 @@
         itemModel.layoutIdentifierForLayoutModel = [dict tm_stringForKey:@"id"];
     }
     //itemModel.specificReuseIdentifier = [dict tm_stringForKey:@"muiID"];
+    // itemModel的linkElementName就是elementTypeMap[itemModel.type]
     itemModel.linkElementName = [[TangramDefaultItemModelFactory sharedInstance].elementTypeMap tm_stringForKey:itemModel.type];
     //TODO specificMuiID 增加逻辑
     return itemModel;

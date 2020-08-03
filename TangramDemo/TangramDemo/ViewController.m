@@ -197,6 +197,8 @@
     item.clipsToBounds = YES;
     return item;
 }
+
+// 获取第index个layout，每个layout是UIView<TangramLayoutProtocol>
 //Layout不做复用，复用的是Item
 - (UIView<TangramLayoutProtocol> *)layoutInTangramView:(TangramView *)view atIndex:(NSUInteger)index
 {
@@ -224,6 +226,39 @@
         TangramWaterFlowLayout *waterFlowLayout = [[TangramWaterFlowLayout alloc]init];
         return waterFlowLayout;
     }
+    
+    if (index == 2) {
+        //普通流式布局
+        DemoLayout *layout = [[DemoLayout alloc] init];
+        layout.margin = @[@10,@20,@20,@20];
+        //layout.aspectRatio = @"5";
+        //控制列数，行数根据Item个数自己算
+        //在Tangram的FlowLayout里面，行数默认是1
+        // 有2%5+1=3列
+        layout.numberOfColumns = index % 5 + 1;
+        layout.hGap = 3;
+        layout.vGap = 5;
+        layout.index = index;
+        layout.backgroundColor = [UIColor redColor];
+        return layout;
+    }
+    
+    if (index == 4) {
+        //普通流式布局
+        DemoLayout *layout = [[DemoLayout alloc] init];
+        layout.margin = @[@10,@20,@20,@20];
+        //layout.aspectRatio = @"5";
+        //控制列数，行数根据Item个数自己算
+        //在Tangram的FlowLayout里面，行数默认是1
+        //有4%5+1 = 5列
+        layout.numberOfColumns = index % 5 + 1;
+        layout.hGap = 3;
+        layout.vGap = 5;
+        layout.index = index;
+        layout.backgroundColor = [UIColor blackColor];
+        return layout;
+    }
+    
     //普通流式布局
     DemoLayout *layout = [[DemoLayout alloc] init];
     layout.margin = @[@10,@20,@20,@20];
@@ -253,6 +288,7 @@
     return model;
 }
 
+// 有20个布局，有20个layout
 - (NSUInteger)numberOfLayoutsInTangramView:(TangramView *)view
 {
     return TESTLAYOUT_NUMBER;

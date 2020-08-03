@@ -26,6 +26,7 @@
 
 @property  (nonatomic, strong) TangramBus *tangramBus;
 
+@property (nonatomic, strong) UITapGestureRecognizer *tap;
 
 @end
 
@@ -38,6 +39,13 @@
     [self registEvent];
     [self.tangramView reloadData];
     // Do any additional setup after loading the view.
+    
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tangramReload:)];
+    [self.view addGestureRecognizer:self.tap];
+}
+
+- (void)tangramReload:(id)arg {
+    //[self.tangramView reloadData];
 }
 
 - (TangramBus *)tangramBus
